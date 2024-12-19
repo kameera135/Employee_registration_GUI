@@ -1,8 +1,22 @@
-<table>
-  <thead>
-    <tr>Name</tr>
-    <tr>EPF</tr>
-    <tr>Mobile</tr>
-    <tr>Address</tr>
-  </thead>
-</table>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Epf</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList">
+        <td>{{user.name}}</td>
+        <td>{{user.epf}}</td>
+        <td>{{user.mobile}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

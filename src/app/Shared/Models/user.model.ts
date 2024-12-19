@@ -5,4 +5,5 @@ export interface User
   mobile: number;
   epf: string;
   address: string;
+  email: string;
 }
