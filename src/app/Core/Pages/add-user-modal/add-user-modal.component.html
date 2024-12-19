@@ -1,0 +1,22 @@
+<h2>Add User</h2>
+<div>
+  <form [formGroup] = "userForm" (ngSubmit)="addUser()">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName = "name" name="name" required />
+
+    <label for="epf">EPF</label>
+    <input type="text" id="epf" formControlName = "epf" name="epf" required />
+
+    <label for="mobile">Mobile</label>
+    <input type="text" id="mobile" formControlName = "mobile" name="mobile" required />
+
+    <label for="address">Address</label>
+    <input type="text" id="address" formControlName= "address" name="address" required />
+
+    <label for="email">Email</label>
+    <input type="text" id="email" formControlName= "email" name="email" required />
+
+    <button type="submit" [disabled]="userForm.invalid">Add User</button>
+    <button type="button" (click)="close()" >Cancel</button>
+  </form>
+</div>

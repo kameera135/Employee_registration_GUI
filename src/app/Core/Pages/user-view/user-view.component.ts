@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { UserService } from '../../../Shared/Services/user.service';
 import { User } from '../../../Shared/Models/user.model';
 import { HttpClient } from '@angular/common/http';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { AddUserModalComponent } from '../add-user-modal/add-user-modal.component';
 
 @Component({
   selector: 'app-user-view',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatDialogModule],
   templateUrl: './user-view.component.html',
   styleUrl: './user-view.component.css'
 })
@@ -20,7 +22,8 @@ export class UserViewComponent {
 
   constructor(
     private shared: UserService,
-    private http: HttpClient
+    private http: HttpClient,
+    private dialog: MatDialog
   ){}
 
   ngOnInit(): void {
@@ -38,6 +41,19 @@ export class UserViewComponent {
         console.log("Error in user retriving",error);
       }
     })
+  }
+
+  openAddUserModal(){
+
+    const dialogRef = this.dialog.open(AddUserModalComponent, {
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe((user)=>{
+      if(user){
+        this.userList.push(user);
+      }
+    });
   }
 
 }
